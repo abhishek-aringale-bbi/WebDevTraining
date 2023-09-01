@@ -69,7 +69,8 @@ img{
     justify-items: center;
     display: grid;
     grid-template-columns: auto auto auto auto auto auto auto;
-    grid-template-rows: auto auto auto auto auto;
+    /* grid-template-rows: auto auto auto auto auto; */
+    grid-auto-rows: 269px;
     border: 2px solid black;
 }
 .card{
@@ -87,8 +88,16 @@ img{
     background-image: url(images/ecg.png);
     background-color: rgb(165, 59, 59);
     filter: opacity(0.5) drop-shadow(0 0 0 blue);
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 
-h1,p{
-    text-align: center;
+
+p{
+    position: absolute;
+    top: 63%;
+}
+h1{
+    padding-left: 2px;
 }

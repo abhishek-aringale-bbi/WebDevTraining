@@ -11,3 +11,7 @@ img{
     border: 5px solid rgb(236, 183, 191);
     border-radius: 50%;
 }
+
+div p{
+    color: red;
+}

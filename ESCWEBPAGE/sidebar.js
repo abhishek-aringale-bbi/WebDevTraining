@@ -68,12 +68,12 @@ let sidebar = document.getElementById("sidebar");
 console.log(sidebar);
 console.log(content);
 console.log(draggable);
-// let isDragging = false;
+let isDragging = false;
 let startX, startLeft;
 
 draggable.addEventListener("mousedown", (e) => {
   console.log("1");
-  // isDragging = true;
+  isDragging = true;
   startX = e.clientX;
   //   console.log(startX);
   startLeft = parseFloat(getComputedStyle(draggable).left) || 0;
@@ -81,7 +81,7 @@ draggable.addEventListener("mousedown", (e) => {
 
 document.addEventListener("mousemove", (e) => {
   console.log("2");
-  // if (!isDragging) return;
+  if (!isDragging) return;
   const offsetX = e.clientX - startX;
   //   console.log(offsetX);
   //   console.log(startLeft);
@@ -114,8 +114,8 @@ document.addEventListener("mousemove", (e) => {
 });
 
 document.addEventListener("mouseup", () => {
-  // if (isDragging) {
-  //   isDragging = false;
-  // }
-  draggable.style.transition = "";
+  if (isDragging) {
+    isDragging = false;
+    draggable.style.transition = "";
+  }
 });

@@ -68,52 +68,54 @@ let sidebar = document.getElementById("sidebar");
 console.log(sidebar);
 console.log(content);
 console.log(draggable);
-let isDragging = false;
+// let isDragging = false;
 let startX, startLeft;
 
 draggable.addEventListener("mousedown", (e) => {
   console.log("1");
-  isDragging = true;
+  // isDragging = true;
   startX = e.clientX;
   //   console.log(startX);
   startLeft = parseFloat(getComputedStyle(draggable).left) || 0;
-  draggable.style.transition = "none";
 });
 
 document.addEventListener("mousemove", (e) => {
   console.log("2");
-  if (!isDragging) return;
+  // if (!isDragging) return;
   const offsetX = e.clientX - startX;
   //   console.log(offsetX);
   //   console.log(startLeft);
   //   console.log(e.offsetX);
-  const newLeft = startLeft + offsetX;
+  const newLeft = offsetX;
 
   let width1 = getComputedStyle(sidebar).width;
-  //   console.log(width1);
+  console.log(width1);
+  console.log(newLeft);
 
   let width2 = getComputedStyle(content).width;
   let z = parseInt(width2) - newLeft;
-  console.log(z);
+  // console.log(z);
 
   // ............
   if (newLeft >= 0) {
-    console.log("xx");
-    draggable.style.left = newLeft + "px";
+    console.log("xx:", e.offsetX);
+    draggable.style.left = sidebar.clientX + "px";
     // content.style.width = `${width2 - newLeft}px`;
     // content.style.left = newLeft + "px";
-    content.setAttribute("style", `width:${newLeft}px`);
-  } else if (newLeft < 0) {
-    let a = newLeft;
-    console.log(parseInt(width1) - 5);
-    draggable.style.left = newLeft + "px";
-    sidebar.setAttribute("style", `width:${newLeft}px`);
+    // content.setAttribute("style", `width:${newLeft}px`);
+    sidebar.setAttribute("style", `width:${parseFloat(width1) + newLeft}px`);
   }
+  // else if (newLeft < 0) {
+  //   let a = newLeft;
+  //   console.log(parseInt(width1) - 5);
+  //   draggable.style.left = newLeft + "px";
+  //   sidebar.setAttribute("style", `width:${newLeft}px`);
+  // }
 });
 
 document.addEventListener("mouseup", () => {
-  if (isDragging) {
-    isDragging = false;
-    draggable.style.transition = ""; // Re-enable transitions when dragging ends
-  }
+  // if (isDragging) {
+  //   isDragging = false;
+  // }
+  draggable.style.transition = "";
 });

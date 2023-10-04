@@ -1,3 +1,6 @@
+* {
+  box-sizing: border-box;
+}
 #sidebar {
   display: flex;
   flex-direction: column;
@@ -84,7 +87,8 @@ img {
   grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
   /* grid-template-rows: auto auto auto auto auto; */
   grid-auto-rows: 269px;
-  /* position: relative; */
+  position: relative;
+  right: 0;
   border: 2px solid black;
 }
 .card {
